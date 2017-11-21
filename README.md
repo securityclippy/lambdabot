@@ -1,6 +1,6 @@
 ## Lambdabot
 
-#####About:  
+##### About:  
 Lambdabot is designed to be a simple example of a serverless slack chatbot which can
 be easily extended to work within a variaty of contexts.  By itself, all Lambdabot will do is
 response to a DM in slack by reversing the text sent to it.  The idea is that instead of using
