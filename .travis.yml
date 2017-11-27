@@ -1,0 +1,12 @@
+language: python
+
+python:
+  - "3.6"
+
+before_install:
+  pip3 install pytest
+  pip3 install pylint
+
+script:
+  python3 -m pytest -v
+
