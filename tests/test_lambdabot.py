@@ -1,12 +1,17 @@
 from pytest import fixture
 from lambda_function.lambdabot import LambdaBot
 import json
+import requests
 
 import os
 
 os.environ['AWS_ACCESS_KEY_ID'] = "LOEIJRDLKD0349DF"
 os.environ['AWS_SECRET_ACCESS_KEY'] = "LKDFIO344KDFKL349DJKLfd"
 
+
+class dummy_response(object):
+    def __init__(self, text):
+        self.text = text
 
 @fixture
 def bot():
@@ -30,12 +35,12 @@ def test_botname_required():
 
 def test_handle_resp_false():
     lb = bot()
-    resp = '{"ok": false}'
+    resp = dummy_response('{"ok": false}')
     assert lb._handle_resp(resp) == False
 
 def test_handle_resp_true():
     lb = bot()
-    resp = '{"ok": true}'
+    resp = dummy_response('{"ok": true}')
     assert lb._handle_resp(resp) == True
 
 def test_is_bot_msg_true():
