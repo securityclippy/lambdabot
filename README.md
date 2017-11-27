@@ -15,9 +15,12 @@ Lambdabot is built in python3 and is deploy with terraform. Make sure terraform 
 $PATH
 
 ### Deployment:
-1. copy ```lambadbot_config.json.exampl``` -> ```lambdabot_config.json```
-2. open ```lambdabot_config.json``` and enter your specific variables. (make sure to save your file)
+1. copy ```lambadbot_config.json.example``` -> ```lambdabot.conf```
+2. open ```lambdabot.conf``` and enter your specific variables. (make sure to save your file)
 3. run ```python3 manage.py --apply```
 
 
-TODO: Guide to setting up slack bot from the slack side  of things
+TODO:
+- [ ] Tighten permissions on ssm parameter store (currently buggy and only works
+to change permissions by destroying role.  Attach role perms seem to also fail)
+- [ ] Slash commands for bot 
