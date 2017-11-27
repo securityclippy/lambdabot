@@ -10,7 +10,7 @@ os.environ['AWS_SECRET_ACCESS_KEY'] = "LKDFIO344KDFKL349DJKLfd"
 
 @fixture
 def bot():
-    return LambdaBot('testbot', is_lambda=False, verification_token='test_token')
+    return LambdaBot('testbot', is_lambda=False, verification_token='test_token', bot_token='test_bot_token')
 
 @fixture
 def user_event():
