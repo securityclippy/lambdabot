@@ -15,9 +15,21 @@ Lambdabot is built in python3 and is deploy with terraform. Make sure terraform 
 $PATH
 
 ### Deployment:
-1. copy ```lambadbot_config.json.example``` -> ```lambdabot.conf```
-2. open ```lambdabot.conf``` and enter your specific variables. (make sure to save your file)
-3. run ```python3 manage.py --apply```
+
+1. create a slack app.  [create slack app](docs/slack_bot_setup.md)
+
+```bash
+git clone https://github.com/securityclippy/lambdabot.git
+cd lambdabot
+cp lambdabot_config.json.example lambdabot.conf
+```
+```commandline
+edit lambdabot.conf with your specific info and save
+```
+
+```commandline
+python3 manage.py --apply
+```
 
 
 TODO:
