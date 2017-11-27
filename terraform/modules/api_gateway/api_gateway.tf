@@ -48,8 +48,7 @@ resource "aws_api_gateway_method_response" "lambdabot_response_method" {
   response_models {
     "application/json" = "Empty"
   }
-  depends_on = ["aws_api_gateway_integration.lambdabot_event_handler_integration",
-    "aws_api_gateway_integration_response.lambdabot_event_handler_integration_response"]
+  depends_on = ["aws_api_gateway_integration.lambdabot_event_handler_integration"]
 }
 
 resource "aws_api_gateway_integration_response" "lambdabot_event_handler_integration_response" {
@@ -57,6 +56,7 @@ resource "aws_api_gateway_integration_response" "lambdabot_event_handler_integra
   resource_id = "${aws_api_gateway_resource.LambdabotResource.id}"
   rest_api_id = "${aws_api_gateway_rest_api.lambdabot_api.id}"
   status_code = "${aws_api_gateway_method_response.lambdabot_response_method.status_code}"
+  depends_on = ["aws_api_gateway_method_response.lambdabot_response_method"]
 }
 
 resource "aws_lambda_permission" "apigw_lambda" {
