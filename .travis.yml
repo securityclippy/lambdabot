@@ -13,3 +13,5 @@ script:
   python3 -m pytest -v tests
   python3 -m pytest --cov=tests
 
+after_success:
+  - coveralls
