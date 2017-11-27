@@ -1,7 +1,7 @@
+## Lambdabot
+
 [![Build Status](https://travis-ci.org/securityclippy/lambdabot.svg?branch=master)](https://travis-ci.org/securityclippy/lambdabot)
 [![Coverage Status](https://coveralls.io/repos/github/securityclippy/lambdabot/badge.svg?branch=master)](https://coveralls.io/github/securityclippy/lambdabot?branch=master)
-
-## Lambdabot
 
 ##### About:  
 Lambdabot is designed to be a simple example of a serverless slack chatbot which can
