@@ -21,6 +21,7 @@ $PATH
 
 
 TODO:
+- [ ] Add custom auth on api_gateway to validate bot token
 - [ ] Tighten permissions on ssm parameter store (currently buggy and only works
 to change permissions by destroying role.  Attach role perms seem to also fail)
 - [ ] Slash commands for bot 
