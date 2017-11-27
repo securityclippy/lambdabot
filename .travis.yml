@@ -8,6 +8,7 @@ before_install:
   - pip install pytest
   - pip install pytest-cov
   - pip install -r lambda_function/requirements.txt
+  - pip install python-coveralls
 
 script:
   - python3 -m pytest -v tests
