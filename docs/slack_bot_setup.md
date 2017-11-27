@@ -38,7 +38,7 @@ You'll need these later
 
 11. Navigate to your bots "basic" information on the left and scroll down to "App Credentials".
 Make note of the verification token
-![](images/Lambdabot%2012.jpg)
+![](images/Lambdabot%2012a.jpg)
 
 12. Now its time to run the code in the repo and get your aws infra all set up.  Once that's done,
 you'll recieve an output URL for the last step.  
