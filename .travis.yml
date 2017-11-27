@@ -4,8 +4,8 @@ python:
   - "3.6"
 
 before_install:
-  pip install boto3
-  pip install pytest
+  - pip install boto3
+  - pip install pytest
 
 script:
   python3 -m pytest -v tests
