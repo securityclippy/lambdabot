@@ -37,6 +37,7 @@ resource "aws_api_gateway_integration" "lambdabot_event_handler_integration" {
   integration_http_method = "POST"
   type = "AWS"
   uri = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${data.terraform_remote_state.lambda.lambda_arn}/invocations"
+  depends_on = ["aws_api_gateway_method.lambdabot_post_method"]
 }
 
 resource "aws_api_gateway_method_response" "lambdabot_response_method" {
@@ -47,6 +48,8 @@ resource "aws_api_gateway_method_response" "lambdabot_response_method" {
   response_models {
     "application/json" = "Empty"
   }
+  depends_on = ["aws_api_gateway_integration.lambdabot_event_handler_integration",
+    "aws_api_gateway_integration_response.lambdabot_event_handler_integration_response"]
 }
 
 resource "aws_api_gateway_integration_response" "lambdabot_event_handler_integration_response" {
@@ -64,7 +67,6 @@ resource "aws_lambda_permission" "apigw_lambda" {
 
   # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
   source_arn = "arn:aws:execute-api:${var.aws_region}:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.lambdabot_api.id}/*/${aws_api_gateway_method.lambdabot_post_method.http_method}${aws_api_gateway_resource.LambdabotResource.path}"
-    #source_arn = "arn:aws:execute-api:${var.myregion}:${var.accountId}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
 
 }
 
