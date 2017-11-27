@@ -74,7 +74,9 @@ resource "aws_lambda_function" "lambdabot" {
   handler = "lambda_function.handler"
   role = "${aws_iam_role.lambdabot_iam_role.arn}"
   environment {
-    BOT_NAME = "${var.lambda_bot_name}"
+    variables {
+      "BOT_NAME" = "${var.lambda_bot_name}"
+    }
   }
   runtime = "python3.6"
   timeout = 120
