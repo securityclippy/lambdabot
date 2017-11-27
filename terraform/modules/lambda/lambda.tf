@@ -20,10 +20,11 @@ data "aws_iam_policy_document" "lambdabot_iam_policy_doc" {
       "ssm:GetParameters"
     ],
     resources = [
-      "${data.terraform_remote_state.ssm_parameter_store.lambda_bot_token_arn}",
-      "${data.terraform_remote_state.ssm_parameter_store.lambda_bot_token_arn}/*",
-      "${data.terraform_remote_state.ssm_parameter_store.lambda_bot_verification_token_arn}",
-      "${data.terraform_remote_state.ssm_parameter_store.lambda_bot_verification_token_arn}/*"
+      #"${data.terraform_remote_state.ssm_parameter_store.lambda_bot_token_arn}",
+      #"${data.terraform_remote_state.ssm_parameter_store.lambda_bot_token_arn}/*",
+      #"${data.terraform_remote_state.ssm_parameter_store.lambda_bot_verification_token_arn}",
+      #"${data.terraform_remote_state.ssm_parameter_store.lambda_bot_verification_token_arn}/*"
+      "*"
     ]
   }
 }
