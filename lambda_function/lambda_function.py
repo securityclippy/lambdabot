@@ -3,6 +3,7 @@
 Lambda function handler for entry into lambdabot
 '''
 
+import os
 from lambdabot import LambdaBot
 
 def handler(event, context):
@@ -19,7 +20,7 @@ def handler(event, context):
     else:
         print("incoming msg: {}".format(event))
         #instantiate bot and do things!
-        bot = LambdaBot(botname='privbot')
+        bot = LambdaBot(botname=os.environ['BOT_NAME'])
         if not bot.process_event(event):
             print("event processing failed, exiting")
             return
