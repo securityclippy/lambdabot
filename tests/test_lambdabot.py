@@ -4,6 +4,9 @@ import json
 
 import os
 
+os.environ['AWS_ACCESS_KEY_ID'] = "LOEIJRDLKD0349DF"
+os.environ['AWS_SECRET_ACCESS_KEY'] = "LKDFIO344KDFKL349DJKLfd"
+
 
 @fixture
 def bot():
