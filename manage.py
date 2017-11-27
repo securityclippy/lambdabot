@@ -38,13 +38,13 @@ def destroy():
     homedir = os.path.abspath(os.curdir)
     config_file = os.path.join(homedir, "lambdabot.conf")
     os.chdir("terraform/dev/ssm_parameter_store")
-    print(subprocess.check_call(["terraform", "destroy", "-var-file", config_file, "-f"]))
+    print(subprocess.check_call(["terraform", "destroy", "-var-file", config_file, "-force"]))
     os.chdir(homedir)
     os.chdir("terraform/dev/lambda")
-    print(subprocess.check_call(["terraform", "destroy", "-var-file", config_file, "-f"]))
+    print(subprocess.check_call(["terraform", "destroy", "-var-file", config_file, "-force"]))
     os.chdir(homedir)
     os.chdir("terraform/dev/api_gateway")
-    print(subprocess.check_call(["terraform", "destroy", "-var-file", config_file, "-f"]))
+    print(subprocess.check_call(["terraform", "destroy", "-var-file", config_file, "-force"]))
     os.chdir(homedir)
 
 def main():
