@@ -5,3 +5,7 @@ output "event_path" {
 output "invoke_url" {
   value = "${module.api_gateway.invoke_url}"
 }
+
+output "event_subscription_url" {
+  value = "${module.api_gateway.event_subscription_url}"
+}
