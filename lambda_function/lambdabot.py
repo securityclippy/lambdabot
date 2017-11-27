@@ -74,8 +74,8 @@ class LambdaBot(object):
     def __init__(self,
                  botname,
                  region_name='us-east-1',
-                 ssm_parameter_name='lambda_bot_token',
-                 verification_token_param_name='lambda_bot_verification_token',
+                 #ssm_parameter_name='{}_bot_token'.format(bot),
+                 #verification_token_param_name='lambda_bot_verification_token',
                  bot_token=None,
                  verification_token=None,
                  is_lambda=True
@@ -94,11 +94,11 @@ class LambdaBot(object):
         self.post_message_url = "https://slack.com/api/chat.postMessage"
         ssm = boto3.client('ssm', region_name=region_name)
         if bot_token is None:
-            bot_token = ssm.get_parameters(Names=[ssm_parameter_name],
+            bot_token = ssm.get_parameters(Names=["{}_bot_token".format(botname)],
                                            WithDecryption=True)['Parameters'][0]['Value']
         self.bot_token = bot_token
         if verification_token is None:
-            verification_token = ssm.get_parameters(Names=[verification_token_param_name],
+            verification_token = ssm.get_parameters(Names=["{}_bot_verification_token".format(botname)],
                                                     WithDecryption=True)['Parameters'][0]['Value']
         self.verification_token = verification_token
         self.headers = {'Content-Type': 'application/json',
