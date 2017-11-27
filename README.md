@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/securityclippy/lambdabot/badge.svg?branch=master)](https://coveralls.io/github/securityclippy/lambdabot?branch=master)
+
 ## Lambdabot
 
 ##### About:  
