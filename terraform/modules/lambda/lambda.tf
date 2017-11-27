@@ -29,13 +29,9 @@ data "aws_iam_policy_document" "lambdabot_iam_policy_doc" {
   }
 }
 
-#resource "aws_iam_role_policy" "" {
-  #policy = "${data.aws_iam_policy_document.lambdabot_iam_policy_doc.json}"
-  #role = "${aws_iam_role.lambdabot_iam_role.id}"
-#}
 
 resource "aws_iam_policy" "lambdabot_iam_policy" {
-  name = "lambdabot_policy"
+  name = "${var.lambda_bot_name}_bot_policy"
   policy = "${data.aws_iam_policy_document.lambdabot_iam_policy_doc.json}"
 }
 
@@ -55,20 +51,15 @@ data "aws_iam_policy_document" "lambdabot_assume_role_policy_doc" {
 }
 
 resource "aws_iam_role" "lambdabot_iam_role" {
-  name = "lambdabot_iam_role"
+  name = "${var.lambda_bot_name}_iam_role"
   assume_role_policy = "${data.aws_iam_policy_document.lambdabot_assume_role_policy_doc.json}"
 }
 
 resource "aws_iam_role_policy" "lambdabot_iam_role_policy" {
-  name = "lambdabot_iam_role_policy"
+  name = "${var.lambda_bot_name}_iam_role_policy"
   policy = "${data.aws_iam_policy_document.lambdabot_iam_policy_doc.json}"
   role = "${aws_iam_role.lambdabot_iam_role.id}"
 }
-
-#resource "aws_iam_role_policy_attachment" "lambdabot_attach_policy" {
-  #policy_arn = "${aws_iam_policy.lambdabot_iam_policy.arn}"
-  #role = "${aws_iam_role.lambdabot_iam_role.name}"
-#}
 
 data "archive_file" "lambdabot_zip" {
   type = "zip"
@@ -79,7 +70,7 @@ data "archive_file" "lambdabot_zip" {
 resource "aws_lambda_function" "lambdabot" {
   filename = "../../../lambda.zip"
   source_code_hash = "${base64sha256(file("../../../lambda.zip"))}"
-  function_name = "lambdabot"
+  function_name = "${var.lambda_bot_name}"
   handler = "lambda_function.handler"
   role = "${aws_iam_role.lambdabot_iam_role.arn}"
   runtime = "python3.6"

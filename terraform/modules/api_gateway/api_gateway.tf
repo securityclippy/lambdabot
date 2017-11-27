@@ -13,7 +13,7 @@ data "terraform_remote_state" "lambda" {
 }
 
 resource "aws_api_gateway_rest_api" "lambdabot_api" {
-  name = "LambdaBotAPI"
+  name = "${var.lambda_bot_name}BotAPI"
   description = "API for lambda bot to use to call lambda functions"
 }
 
