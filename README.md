@@ -11,7 +11,7 @@ the static reverser interaction, the user will substitute other logic in and use
 more complex functions
 
 ##### Requirements: 
-Lambdabot is built in python3 and is deploy with terraform. Make sure terraform is installed and in your
+Lambdabot is built in python3 and is deployed with terraform. Make sure terraform is installed and in your
 $PATH
 
 ### Deployment:
